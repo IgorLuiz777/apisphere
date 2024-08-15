@@ -1,6 +1,7 @@
 package br.com.fiap.apisphere.user;
 
 import br.com.fiap.apisphere.user.dto.UserFormRequest;
+import br.com.fiap.apisphere.user.dto.UserResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -21,10 +22,10 @@ public class UserController {
     }
 
     @PostMapping
-    public ResponseEntity<User> create(@RequestBody UserFormRequest userForm, UriComponentsBuilder ucBuilder) {
+    public ResponseEntity<UserResponse> create(@RequestBody UserFormRequest userForm, UriComponentsBuilder ucBuilder) {
         var user = userService.create(userForm.toModel());
         var uri = ucBuilder.path("/users/{id}").buildAndExpand(user.getId()).toUri();
-        return ResponseEntity.created(uri).body(user);
+        return ResponseEntity.created(uri).body(UserResponse.from(user));
     }
 
 }
