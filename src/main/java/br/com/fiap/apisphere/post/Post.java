@@ -1,5 +1,6 @@
 package br.com.fiap.apisphere.post;
 
+import br.com.fiap.apisphere.user.User;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -15,4 +16,7 @@ public class Post {
     private String text;
 
     private LocalDateTime createdAt;
+
+    @ManyToOne
+    private User user;
 }
