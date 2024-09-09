@@ -10,7 +10,7 @@ INSERT INTO tb_sphere_users (name, bio, email, password, created_at, updated_at)
 ('Bruno Souza', 'Engenheiro de software com experiência em front-end.', 'bruno.souza@example.com', '$2a$12$jUKEr6VT5DS.fpNx4PCeFui3RiS//xTBaHVoesW4zoIMt/JqYtw0a', '2024-08-25 10:00:00', '2024-08-25 10:00:00'),
 ('Carla Ferreira', 'Especialista em segurança cibernética.', 'carla.ferreira@example.com', '$2a$12$jUKEr6VT5DS.fpNx4PCeFui3RiS//xTBaHVoesW4zoIMt/JqYtw0a', '2024-08-25 11:00:00', '2024-08-25 11:00:00'),
 ('Diego Costa', 'Desenvolvedor full-stack.', 'diego.costa@example.com', '$2a$12$jUKEr6VT5DS.fpNx4PCeFui3RiS//xTBaHVoesW4zoIMt/JqYtw0a', '2024-08-25 12:00:00', '2024-08-25 12:00:00'),
-('Eduarda Lima', 'Analista de dados.', 'eduarda.lima@example.com', ' $2a$12$jUKEr6VT5DS.fpNx4PCeFui3RiS//xTBaHVoesW4zoIMt/JqYtw0a', '2024-08-25 13:00:00', '2024-08-25 13:00:00');
+('Eduarda Lima', 'Analista de dados.', 'eduarda.lima@example.com', '$2a$12$jUKEr6VT5DS.fpNx4PCeFui3RiS//xTBaHVoesW4zoIMt/JqYtw0a', '2024-08-25 13:00:00', '2024-08-25 13:00:00');
 
 -- Atualizar a tabela tb_sphere_posts para associar cada post a um usuário
 UPDATE tb_sphere_posts SET user_id = 1 WHERE id = 1; -- Primeiro post pertence a Alice Silva
