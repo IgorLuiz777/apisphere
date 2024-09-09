@@ -11,6 +11,8 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
+import org.springframework.web.util.UriComponentsBuilder;
 
 @Service
 public class UserService {
@@ -54,7 +56,8 @@ public class UserService {
             System.out.println("Arquivo salvo com sucesso");
 
             var user = userRepository.findByEmail(email).orElseThrow(() -> new UsernameNotFoundException("User not found"));
-            var avatarUrl = "http://localhost:8082/avatars/" + destinationFile.getFileName();
+            var baseUrl = ServletUriComponentsBuilder.fromCurrentContextPath();
+            var avatarUrl = baseUrl + "/avatars/" + destinationFile.getFileName();
             user.setAvatar(avatarUrl);
             userRepository.save(user);
 
