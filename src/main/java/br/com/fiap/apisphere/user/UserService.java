@@ -5,6 +5,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.List;
 
+import br.com.fiap.apisphere.mail.MailService;
 import br.com.fiap.apisphere.user.dto.UserProfileResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -22,6 +23,9 @@ public class UserService {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
+    @Autowired
+    private MailService mailService;
+
     public List<User> findAll() {
         return  userRepository.findAll();
     }
@@ -29,6 +33,8 @@ public class UserService {
     public User create(User user) {
         user.setPassword(passwordEncoder
         .encode(user.getPassword()));
+        user.setAvatar("https://avatar.iran.liara.run/username?username=" + user.getName());
+        mailService.sendWelcomeEmail(user);
         return userRepository.save(user);
     }
 
